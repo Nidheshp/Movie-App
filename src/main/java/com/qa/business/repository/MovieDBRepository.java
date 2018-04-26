@@ -36,7 +36,7 @@ public class MovieDBRepository implements IMovieRepository {
 		if (aMovie != null) {
 			return util.getJSONForObject(aMovie);
 		} else {
-			return "{\response\":\"movie not found\"}";
+			return "{\"response\":\"movie not found\"}";
 		}
 	}
 
