@@ -19,10 +19,15 @@ public class MovieService implements IMovieService {
 	public String getAMovie(Long id) {
 		return repo.getAMovie(id);
 	}
-	
+
 	@Override
 	public String createAMovie(String jsonMovie) {
 		return repo.createAMovie(jsonMovie);
+	}
+
+	@Override
+	public String deleteAMovie(Long id) {
+		return repo.deleteAMovie(id);
 	}
 
 }

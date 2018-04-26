@@ -38,7 +38,10 @@ public class MovieDBRepository implements IMovieRepository {
 		Movie aMovie = getMovie(id);
 		if (aMovie != null) {
 			return util.getJSONForObject(aMovie);
-		} else {
+		}
+
+		else {
+
 			return "{\"response\":\"movie not found\"}";
 		}
 	}
@@ -46,7 +49,7 @@ public class MovieDBRepository implements IMovieRepository {
 	private Movie getMovie(Long id) {
 		return manager.find(Movie.class, id);
 	}
-	
+
 	@Override
 	@Transactional(REQUIRED)
 	public String createAMovie(String movieJSON) {
@@ -55,4 +58,20 @@ public class MovieDBRepository implements IMovieRepository {
 		return "{\"response\":\"movie created\"}";
 
 	}
+
+	@Override
+	@Transactional(REQUIRED)
+	public String deleteAMovie(Long id) {
+		Movie oldMovie = getMovie(id);
+		if (oldMovie != null) {
+			manager.remove(oldMovie);
+			return "{\"response\":\"movie deleted\"}";
+		}
+
+		else {
+
+			return "{\"Response\": \"Account not found so unable to delete\"}";
+		}
+	}
+
 }
