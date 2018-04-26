@@ -52,4 +52,12 @@ public class MovieEndpoint {
 
 	}
 
+	@PUT
+	@Path("/json")
+	@Produces({ "application/json" })
+	public String updateAMovie(String updateTheMovie) {
+
+		return service.updateAMovie(updateTheMovie);
+
+	}
 }

@@ -10,4 +10,5 @@ public interface IMovieRepository {
 
 	String deleteAMovie(Long id);
 
+	String updateAMovie(String updateTheMovie);
 }
