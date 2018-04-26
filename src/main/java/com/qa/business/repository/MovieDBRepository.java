@@ -74,4 +74,21 @@ public class MovieDBRepository implements IMovieRepository {
 		}
 	}
 
+	@Override
+	@Transactional(REQUIRED)
+	public String updateAMovie(String updateTheMovie) {
+		Movie updateMovie = util.getObjectForJSON(updateTheMovie, Movie.class);
+		Movie originalMovie = getMovie(updateMovie.getId());
+		if (updateTheMovie != null) {
+			originalMovie = updateMovie;
+			manager.merge(originalMovie);
+
+			return "{\"response\":\"Account updated\"}";
+		}
+
+		else {
+
+			return "{\"Response\":\"Account not found so unable to update\"}";
+		}
+	}
 }
